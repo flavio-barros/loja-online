@@ -1,9 +1,13 @@
 package com.flavio.lojaonline.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -18,17 +22,21 @@ public class Produto {
 	@Size(max = 50)
 	private String nome;
 	
-	private String fabricante;
+	@ManyToOne
+	private Fabricante fabricante;
+	
 	private String descricao;
 	private double preco;
+	
+	@ManyToMany(mappedBy = "produtos")
+	private List<Secao> secoes;
 	
 	public Produto() {
 		super();
 	}
 	
-	public Produto(long id, @Size(max = 50) String nome, String fabricante, String descricao, double preco) {
+	public Produto(@Size(max = 50) String nome, Fabricante fabricante, String descricao, double preco) {
 		super();
-		this.id = id;
 		this.nome = nome;
 		this.fabricante = fabricante;
 		this.descricao = descricao;
@@ -51,11 +59,11 @@ public class Produto {
 		this.nome = nome;
 	}
 
-	public String getFabricante() {
+	public Fabricante getFabricante() {
 		return fabricante;
 	}
 
-	public void setFabricante(String fabricante) {
+	public void setFabricante(Fabricante fabricante) {
 		this.fabricante = fabricante;
 	}
 
@@ -73,6 +81,14 @@ public class Produto {
 
 	public void setPreco(double preco) {
 		this.preco = preco;
+	}
+
+	public List<Secao> getSecoes() {
+		return secoes;
+	}
+
+	public void setSecoes(List<Secao> secoes) {
+		this.secoes = secoes;
 	}
 	
 }
