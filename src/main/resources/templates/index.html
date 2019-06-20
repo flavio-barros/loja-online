@@ -7,10 +7,21 @@
 	<title>Página Inicial</title>
 	<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
 	<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
+	<link th:href="@{/css/shop-homepage.css}" rel="stylesheet"/>
+	<link th:href="@{/css/footer.css}" rel="stylesheet"/>
 </head>
 
 <body>
-	<h1>Página inicial</h1>
+
+	<div th:replace="fragments/header"></div>
+	
+	<div class="container">
+		<div class="row">
+		<div th:replace="fragments/side-menu"></div>
+		</div>
+	</div>
+		
+	<div th:replace="fragments/footer"></div>
 	
 	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
