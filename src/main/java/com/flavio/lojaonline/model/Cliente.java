@@ -30,16 +30,21 @@ public class Cliente {
 	@OneToOne
 	private Carrinho carrinho;
 	
+	@OneToOne
+	private Usuario usuario;
+	
 	public Cliente() {
 		super();
 	}
 
-	public Cliente(Endereco enderecoPrincipal, List<Endereco> enderecosPedidos, List<Pedido> pedidos, Carrinho carrinho) {
+	public Cliente(Endereco enderecoPrincipal, List<Endereco> enderecosPedidos, List<Pedido> pedidos, 
+			Carrinho carrinho, Usuario usuario) {
 		super();
 		this.enderecoPrincipal = enderecoPrincipal;
 		this.enderecosPedidos = enderecosPedidos;
 		this.pedidos = pedidos;
 		this.carrinho = carrinho;
+		this.usuario = usuario;
 	}
 
 	public Long getId() {
@@ -80,5 +85,13 @@ public class Cliente {
 
 	public void setCarrinho(Carrinho carrinho) {
 		this.carrinho = carrinho;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 }

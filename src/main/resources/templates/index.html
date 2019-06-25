@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 	<meta charset="UTF-8"/>
 	<meta name="viewport" content="width=device-width" />
@@ -17,7 +17,16 @@
 	
 	<div class="container">
 		<div class="row">
-		<div th:replace="fragments/side-menu"></div>
+			<div th:replace="fragments/side-menu"></div>
+			<div sec:authorize="isAuthenticated()">
+				Usuário autenticado!
+				<div sec:authentication="name"></div>
+		        Authenticated user roles:
+		        <div sec:authentication="principal.authorities"></div>
+			</div>
+			<div sec:authorize="isAnonymous()">
+			  Usuário <b>NÃO</b> autenticado
+			</div>
 		</div>
 	</div>
 		

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	
+	<title>Login</title>
+	
+	<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+	<link th:href="@{/css/signin.css}" rel="stylesheet" />
+</head>
+
+<body class="text-center">
+
+	<form class="form-signin" th:action="@{/login}" method="post">
+		<h1 class="h3 mb-3 font-weight-normal">Faça login</h1>
+		
+		<label for="inputEmail" class="sr-only">Endereço de email</label> 
+		<input type="email" name="username" id="inputEmail" class="form-control" 
+			placeholder="Seu email" required autofocus>
+			
+		<label for="inputPassword" class="sr-only">Senha</label>
+		<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Senha" required>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+		<a class="btn btn-lg btn-secondary btn-block" role="button" th:href="@{/home}">Cancelar</a>
+	</form>
+
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+
+</html>

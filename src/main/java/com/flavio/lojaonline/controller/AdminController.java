@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(value = "/")
-public class InicialController {
+@RequestMapping(value = "/admin")
+public class AdminController {
 	
-	@RequestMapping(value = {"home"}, method = RequestMethod.GET)
-	public String index() {
-		return "index";
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String paginaInicial() {
+		return "admin/home";
 	}
 }
