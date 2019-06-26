@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/layout-admin}">
+<head>
+	<title>Seções</title>
+</head>
+
+<body>
+	
+	<div layout:fragment="content">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="#">Painel de controle</a>
+			</li>
+			<li class="breadcrumb-item active">Seções</li>
+		</ol>
+		
+		<div class="card mb-3">
+			<div class="card-header">
+				<i class="fas fa-table"></i>
+				Seções cadastradas
+			</div>
+			<div class="card-body">
+
+				<div class="table-responsive">
+					<table class="table table-bordered table-striped tabela-secao" width="100%" cellspacing="0">
+						<thead>
+							<tr>
+								<th>Nome</th>
+								<th>Produtos</th>
+								<th>Ações</th>
+							</tr>
+						</thead>
+						<tbody>
+							<th:block th:each="secao : ${secoes}">
+								<tr>
+									<td th:text="${secoes.name}"></td>
+									<td>Produtos</td>
+									<td>Ações</td>
+								</tr>
+							</th:block>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<th:block layout:fragment="scripts">
+		<script th:src="@{/webjars/datatables/js/jquery.dataTables.min.js}"></script>
+        <script th:src="@{/webjars/datatables/js/dataTables.bootstrap4.min.js}"></script>
+        <script th:src="@{/js/secao.js}"></script>
+    </th:block>
+	
+</body>
+
+</html>

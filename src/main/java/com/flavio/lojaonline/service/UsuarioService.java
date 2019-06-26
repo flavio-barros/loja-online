@@ -1,7 +1,5 @@
 package com.flavio.lojaonline.service;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,12 +10,10 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.flavio.lojaonline.model.Papel;
 import com.flavio.lojaonline.model.Usuario;
-import com.flavio.lojaonline.repository.PapelRepository;
 import com.flavio.lojaonline.repository.UsuarioRepository;
 
 @Service

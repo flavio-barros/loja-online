@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width" />
+	<title>Layout Administração</title>
+	
+	<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+	<link th:href="@{/webjars/datatables/css/dataTables.bootstrap4.min.css}" rel="stylesheet"/>
+	<link th:href="@{/css/sb-admin.css}" rel="stylesheet"/>
+	<link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+</head>
+
+<body>
+	
+	<div th:replace="admin/fragments/header"></div>
+	
+	<div id="wrapper">
+		
+		<div th:replace="admin/fragments/side-menu"></div>
+		
+		<div id="content-wrapper">
+		
+	    	<div class="container-fluid" layout:fragment="content">
+	    	
+	    	</div>
+	      
+	      	<div th:replace="admin/fragments/footer"></div>
+	
+	    </div>
+	</div>
+	
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	<th:block layout:fragment="scripts"></th:block>
+</body>
+
+</html>

@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="~{admin/layout-admin}">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<title>Loja online - Administração</title>
 </head>
+
 <body>
-	<h1>Página incial admin</h1>
+	
+	<div layout:fragment="content">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="#">Painel de controle</a>
+			</li>
+			<li class="breadcrumb-item active">Visão geral</li>
+		</ol>
+	</div>
 </body>
+
 </html>
