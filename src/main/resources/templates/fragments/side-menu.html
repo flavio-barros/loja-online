@@ -1,8 +1,8 @@
 <div class="col-lg-3">
 	<h1 class="my-4">Categorias</h1>
 	<div class="list-group">
-		<a href="#" class="list-group-item">Category 1</a> <a href="#"
-			class="list-group-item">Category 2</a> <a href="#"
-			class="list-group-item">Category 3</a>
+		<th:block th:each="secao : ${secoes}">
+			<a href="#" class="list-group-item" th:text="${secao.nome}"></a>
+		</th:block>
 	</div>
 </div>

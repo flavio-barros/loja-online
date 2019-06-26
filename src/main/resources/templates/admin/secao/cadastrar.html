@@ -1,10 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/layout-admin}">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<title>Seções</title>
 </head>
-<body>
 
+<body>
+	
+	<div layout:fragment="content">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a th:href="@{/admin/home}">Painel de controle</a>
+			</li>
+			<li class="breadcrumb-item">
+				<a th:href="@{/admin/secao/listar}">Seções</a>
+			</li>
+			<li class="breadcrumb-item active">Cadastrar</li>
+		</ol>
+		
+		<div class="card mb-3">
+			<div class="card-header">
+				<i class="fas fa-table"></i>
+				Cadastrar Seção
+			</div>
+			<div class="card-body">
+				<form th:action="@{/admin/secao/cadastrar}" th:object="${secao}" method="post">
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="nomeSecao">Nome</label> 
+							<input type="text" id="nomeSecao" class="form-control" th:field="*{nome}" 
+								name="nome" placeholder="Nome">
+						</div>
+					</div>
+					<button type="submit" class="btn btn-primary">Cadastrar</button>
+					<a role="button" th:href="@{/admin/secao/listar}" class="btn btn-secondary">Cancelar</a>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<th:block layout:fragment="scripts">
+    </th:block>
+	
 </body>
+
 </html>
