@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
@@ -21,7 +22,8 @@ public class Secao {
 	private String nome;
 	
 	@ManyToMany
-	@JoinTable(name = "secao_produto")
+	@JoinTable(name = "secao_produto", joinColumns= @JoinColumn(name="secao_id"), 
+	inverseJoinColumns=@JoinColumn(name="produto_id"))
 	private List<Produto> produtos;
 	
 	public Secao() {
@@ -55,6 +57,14 @@ public class Secao {
 
 	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
+	}
+	
+	public void addProduto(Produto produto) {
+		this.produtos.add(produto);
+	}
+	
+	public void removeProduto(Produto produto) {
+		this.produtos.remove(produto);
 	}
 	
 }

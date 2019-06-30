@@ -4,3 +4,7 @@
 	width: 31px;
 	height: 31px;
 }
+
+textarea {
+	resize: none;
+}

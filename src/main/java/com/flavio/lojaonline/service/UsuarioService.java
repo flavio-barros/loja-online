@@ -28,7 +28,6 @@ public class UsuarioService implements UserDetailsService{
         if (usuario == null){
             throw new UsernameNotFoundException("Email inválido ou senha inválida.");
         }
-        System.out.println("Nome: "+usuario.getPrimeiroNome()+" "+usuario.getUltimoNome());
         return 
         	new User(usuario.getEmail(), usuario.getSenha(), mapRolesToAuthorities(usuario.getPapeis()));
 	}

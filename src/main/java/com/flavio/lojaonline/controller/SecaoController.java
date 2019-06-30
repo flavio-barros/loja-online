@@ -13,55 +13,55 @@ import com.flavio.lojaonline.model.Secao;
 import com.flavio.lojaonline.service.SecaoService;
 
 @Controller
-@RequestMapping(value = "/admin/secao/")
-public class SecaoAdminController {
+@RequestMapping(value = "/admin/secao")
+public class SecaoController {
 	
 	@Autowired
 	private SecaoService secaoService;
 	
-	@RequestMapping(value = {"listar", ""})
+	@RequestMapping(value = {"/listar", "/", ""}, method = RequestMethod.GET)
 	public String listar(Model model) {
 		model.addAttribute("secoes", secaoService.listar());
 		return "admin/secao/listar";
 	}
 	
-	@RequestMapping(value = "cadastrar", method = RequestMethod.GET)
+	@RequestMapping(value = "/cadastrar", method = RequestMethod.GET)
 	public String paginaCadastrar(Secao secao) {
 		return "admin/secao/cadastrar";
 	}
 	
-	@RequestMapping(value = "cadastrar", method = RequestMethod.POST)
+	@RequestMapping(value = "/cadastrar", method = RequestMethod.POST)
 	public String cadastrar(Secao secao) {
 		secaoService.salvar(secao);
-		return "redirect:/admin/secao/listar";
+		return "redirect:/admin/secao";
 	}
 	
-	@RequestMapping(value = "editar/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/editar/{id}", method = RequestMethod.GET)
 	public String paginaEditar(@PathVariable long id, Model model) {
 		Optional<Secao> secaoOpt = secaoService.recuperar(id);
 		if(secaoOpt.isPresent()) {
 			model.addAttribute("secao", secaoOpt.get());
 			return "admin/secao/editar";
 		}else {
-			return "redirect:/admin/secao/listar";
+			return "redirect:/admin/secao";
 		}
 	}
 	
-	@RequestMapping(value = "editar/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = "/editar/{id}", method = RequestMethod.POST)
 	public String editar(@PathVariable("id") Long id, Secao secao) {
 		secao.setId(id);
 		secaoService.salvar(secao);
-		return "redirect:/admin/secao/listar";
+		return "redirect:/admin/secao";
 	}
 	
-	@RequestMapping(value = "remover/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/remover/{id}", method = RequestMethod.GET)
 	public String remover(@PathVariable("id") Long id) {
 		Optional<Secao> secaoOpt = secaoService.recuperar(id);
 		if(secaoOpt.isPresent()) {
 			secaoService.remover(secaoOpt.get());
-			return "redirect:/admin/secao/listar";
+			return "redirect:/admin/secao";
 		}else {
-			return "redirect:/admin/secao/listar";
+			return "redirect:/admin/secao";
 		}
 	}
 }

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/layout-admin}">
+<head>
+	<title>Fabricante - Cadastrar</title>
+</head>
+
+<body>
+	
+	<div layout:fragment="content">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a th:href="@{/admin/home}">Painel de controle</a>
+			</li>
+			<li class="breadcrumb-item">
+				<a th:href="@{/admin/fabricante/listar}">Fabricantes</a>
+			</li>
+			<li class="breadcrumb-item active">Cadastrar</li>
+		</ol>
+		
+		<div class="card mb-3">
+			<div class="card-header">
+				<i class="fas fa-table"></i>
+				Cadastrar Fabricante
+			</div>
+			<div class="card-body">
+				<form th:action="@{/admin/fabricante/cadastrar}" th:object="${fabricante}" method="post">
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="nome-fabricante">Nome</label> 
+							<input type="text" id="nome-fabricante" class="form-control" th:field="*{nome}" 
+								name="nome" placeholder="Nome">
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-12">
+							<label for="descricao-fabricante">Descrição</label> 
+							<textarea class="form-control" th:field="*{descricao}" id="descricao-fabricante" rows="5"></textarea>
+						</div>
+					</div>
+					<button type="submit" class="btn btn-primary">Cadastrar</button>
+					<a role="button" th:href="@{/admin/fabricante}" class="btn btn-secondary">Cancelar</a>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<th:block layout:fragment="scripts">
+    </th:block>
+	
+</body>
+
+</html>
