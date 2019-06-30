@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "secao")
@@ -19,6 +21,8 @@ public class Secao {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	
+	@NotBlank(message = "O atributo Nome não pode ser vazio")
+	@Size(max = 20, message = "O atributo Nome deve ter no máximo 20 caracteres")
 	private String nome;
 	
 	@ManyToMany

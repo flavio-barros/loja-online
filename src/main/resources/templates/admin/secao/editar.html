@@ -33,6 +33,9 @@
 							<label for="nomeSecao">Nome</label> 
 							<input type="text" id="nomeSecao" class="form-control" th:field="*{nome}" 
 								placeholder="Nome">
+							<div class="invalid-feedback" id="nomeSecaoErro" 
+								th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">
+							</div>
 						</div>
 					</div>
 					<button type="submit" class="btn btn-primary">Editar</button>
@@ -43,6 +46,7 @@
 	</div>
 	
 	<th:block layout:fragment="scripts">
+		<script th:src="@{/js/secao-form.js}"></script>
     </th:block>
 	
 </body>
