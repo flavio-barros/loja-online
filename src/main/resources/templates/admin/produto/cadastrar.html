@@ -5,9 +5,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{admin/layout-admin}">
 <head>
-	<title>Produto - Cadastrar</title>
-	
-	<link th:href="@{/css/amsify.suggestags.css}" rel="stylesheet"/>
+	<title>Produto - Editar</title>
 </head>
 
 <body>
@@ -18,7 +16,7 @@
 				<a th:href="@{/admin/home}">Painel de controle</a>
 			</li>
 			<li class="breadcrumb-item">
-				<a th:href="@{/admin/produto/listar}">Produtos</a>
+				<a th:href="@{/admin/produto}">Produtos</a>
 			</li>
 			<li class="breadcrumb-item active">Cadastrar</li>
 		</ol>
@@ -35,7 +33,8 @@
 							<label for="nomeProduto">Nome</label> 
 							<input type="text" id="nomeProduto" class="form-control" th:field="*{nome}" 
 								name="nome" placeholder="Nome">
-							<div class="invalid-feedback" id="nomeProdutoErro" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">
+							<div class="invalid-feedback" id="nomeProdutoErro" th:if="${#fields.hasErrors('nome')}" 
+								th:errors="*{nome}">
 							</div>
 						</div>
 					</div>
@@ -48,30 +47,41 @@
 									<option th:value="${fabricante.id}" th:text="${fabricante.nome}"></option>
 								</th:block>
 							</select>
-							<div class="invalid-feedback" id="fabricanteProdutoErro" th:if="${#fields.hasErrors('fabricante')}" th:errors="*{fabricante}">
+							<div class="invalid-feedback" id="fabricanteProdutoErro" th:if="${#fields.hasErrors('fabricante.id')}"
+								th:errors="*{fabricante.id}">
 							</div>
 						</div>
 						<div class="form-group col-md-6">
 							<label for="precoProduto">Preço</label> 
 							<input id="precoProduto" class="form-control" th:field="*{preco}" 
 								name="preco" placeholder="Preço">
+							<div class="invalid-feedback" id="fabricanteProdutoErro" th:if="${#fields.hasErrors('preco')}" 
+								th:errors="*{preco}">
+							</div>
 						</div>
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							<label for="precoProduto" class="row col-md-12">Seções</label>
+							<label for="secoesProduto" class="row col-md-12">Seções</label>
 							<th:block th:each="secao : ${secoes}">
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" th:field="*{secoes}" type="checkbox" th:value="${secao.id}" th:id="'boxSecao' + ${secao.id}">
+									<input class="form-check-input" th:field="*{secoes}" type="checkbox" th:value="${secao.id}" 
+										th:id="'boxSecao' + ${secao.id}">
 									<label class="form-check-label" th:for="'boxSecao' + ${secao.id}" th:text="${secao.nome}"></label>
 								</div>
 							</th:block>
+							<div class="invalid-feedback" id="secoesProduto" th:if="${#fields.hasErrors('secoes')}" 
+								th:errors="*{secoes}">
+							</div>
 						</div>
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-12">
-							<label for="descricao-fabricante">Descrição</label> 
+							<label for="descricaoProduto">Descrição</label> 
 							<textarea class="form-control" th:field="*{descricao}" id="descricaoProduto" rows="5"></textarea>
+							<div class="invalid-feedback" id="descricaoProdutoErro" th:if="${#fields.hasErrors('descricao')}" 
+								th:errors="*{descricao}">
+							</div>
 						</div>
 					</div>
 					<button type="submit" class="btn btn-primary">Cadastrar</button>

@@ -8,7 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+
+import com.flavio.lojaonline.group.IProdutoFabricante;
 
 @Entity
 @Table(name = "fabricante")
@@ -16,6 +19,7 @@ public class Fabricante {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Min(value = 0, groups = IProdutoFabricante.class, message = "Selecione um fabricante")
 	private Long id;
 	
 	@NotBlank(message = "O atributo Nome não pode ser vazio")

@@ -45,10 +45,16 @@ public class ProdutoController {
 	}
 	
 	@RequestMapping(value = "/cadastrar", method = RequestMethod.POST)
-	public String cadastrar(Produto produto) {
+	public String cadastrar(@Valid Produto produto, BindingResult bindingResult, Model model) {
 //		Recuperando o fabricante do BD
 		Optional<Fabricante> fabricanteOpt = fabricanteService.recuperarPorProduto(produto);
 		produto.setFabricante(fabricanteOpt.orElse(null));
+		
+		if(bindingResult.hasErrors()) {
+			model.addAttribute("fabricantes", fabricanteService.listar());
+			model.addAttribute("secoes", secaoService.listar());
+			return "admin/produto/cadastrar";
+		}
 		
 		this.produtoService.salvar(produto);
 		return "redirect:/admin/produto";
