@@ -2,9 +2,12 @@ package com.flavio.lojaonline.controller;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,7 +34,10 @@ public class FabricanteController {
 	}
 	
 	@RequestMapping(value = "/cadastrar", method = RequestMethod.POST)
-	public String cadastrar(Fabricante fabricante) {
+	public String cadastrar(@Valid Fabricante fabricante, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			return "admin/fabricante/cadastrar";
+		}
 		fabricanteService.salvar(fabricante);
 		return "redirect:/admin/fabricante/listar";
 	}
@@ -48,8 +54,11 @@ public class FabricanteController {
 	}
 	
 	@RequestMapping(value = "/editar/{id}", method = RequestMethod.POST)
-	public String editar(@PathVariable("id") Long id, Fabricante fabricante) {
+	public String editar(@PathVariable("id") Long id, @Valid Fabricante fabricante, BindingResult bindingResult) {
 		fabricante.setId(id);
+		if(bindingResult.hasErrors()) {
+			return "admin/fabricante/editar";
+		}
 		fabricanteService.salvar(fabricante);
 		return "redirect:/admin/fabricante";
 	}

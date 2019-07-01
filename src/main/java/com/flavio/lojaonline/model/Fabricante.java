@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "fabricante")
@@ -17,7 +18,9 @@ public class Fabricante {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	
+	@NotBlank(message = "O atributo Nome não pode ser vazio")
 	private String nome;
+	
 	private String descricao;
 	
 	@OneToMany(mappedBy = "fabricante")
