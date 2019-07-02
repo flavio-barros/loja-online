@@ -29,7 +29,7 @@ $(document).ready(function () {
             }
         },
         "dom": '<"row justify-content-between" lpf>ti',
-        "columnDefs": [{ orderable: false, targets: [1, 2] }],
+        "columnDefs": [{ orderable: false, targets: [2, 3] }],
         "lengthMenu": [5, 10, 20, 50]
     });
 });

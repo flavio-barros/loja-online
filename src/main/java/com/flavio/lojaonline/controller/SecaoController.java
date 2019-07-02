@@ -73,4 +73,14 @@ public class SecaoController {
 			return "redirect:/admin/secao";
 		}
 	}
+	
+	@RequestMapping(value = "/detalhes/{id}", method = RequestMethod.GET)
+	public String detalhes(@PathVariable("id") Long id, Model model) {
+		Optional<Secao> secaoOpt = secaoService.recuperar(id);
+		if(secaoOpt.isPresent()) {
+			model.addAttribute("secao", secaoOpt.get());
+			return "admin/secao/detalhes";
+		}
+		return "redirect:/admin/secao";
+	}
 }

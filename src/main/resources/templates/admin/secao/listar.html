@@ -32,7 +32,8 @@
 						<thead>
 							<tr>
 								<th>Nome</th>
-								<th>Produtos</th>
+								<th>Quantidade de produtos</th>
+								<th>Detalhes</th>
 								<th>Ações</th>
 							</tr>
 						</thead>
@@ -40,7 +41,13 @@
 							<th:block th:each="secao : ${secoes}">
 								<tr>
 									<td th:text="${secao.nome}"></td>
-									<td>Produtos</td>
+									<td th:text="${#lists.size(secao.produtos) + ' produto(s)'}"></td>
+									<td>
+										<a role="button" th:href="@{/admin/secao/detalhes/{id}(id=${secao.id})}" 
+											class="btn btn-sm btn-success">
+											<i class="fas fa-info-circle"></i>
+										</a>
+									</td>
 									<td>
 										<a role="button" th:href="@{/admin/secao/editar/{id}(id=${secao.id})}" 
 											class="btn btn-sm btn-warning">
