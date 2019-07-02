@@ -30,18 +30,27 @@ public class ProdutoService {
 	}
 	
 	public void salvar(Produto produto) {
-		Produto ProdutoSalvo = this.produtoRepository.save(produto);
+		Produto produtoSalvo = this.produtoRepository.save(produto);
 		
-//		Salvando as seções do produto
-		List<Produto> produtos = new ArrayList<Produto>();
-		produtos.add(ProdutoSalvo);
-		
+//		Salvando as seções do objeto produto
 		for(Secao secaoProduto: produto.getSecoes()) {
 			Optional<Secao> secaoOpt = secaoRepository.findById(secaoProduto.getId());
 			if(secaoOpt.isPresent()) {
 				Secao secao = secaoOpt.get();
-				secao.addProduto(ProdutoSalvo);
+				secao.addProduto(produtoSalvo);
 				secaoRepository.save(secao);
+			}
+		}
+		
+//		Removendo as seções que não estão no objeto produto
+		for(Secao secaoProduto: produtoSalvo.getSecoes()) {
+			Optional<Secao> secaoOpt = secaoRepository.findById(secaoProduto.getId());
+			if(secaoOpt.isPresent()) {
+				Secao secao = secaoOpt.get();
+				if(!produto.getSecoes().contains(secao)) {
+					secao.removeProduto(produtoSalvo);
+					secaoRepository.save(secao);
+				}
 			}
 		}
 	}

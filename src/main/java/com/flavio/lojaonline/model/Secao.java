@@ -1,7 +1,8 @@
 package com.flavio.lojaonline.model;
 
-import java.util.List;
+import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,6 +22,7 @@ public class Secao {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	
+	@Column(unique = true)
 	@NotBlank(message = "O atributo Nome não pode ser vazio")
 	@Size(max = 20, message = "O atributo Nome deve ter no máximo 20 caracteres")
 	private String nome;
@@ -28,7 +30,7 @@ public class Secao {
 	@ManyToMany
 	@JoinTable(name = "secao_produto", joinColumns= @JoinColumn(name="secao_id"), 
 	inverseJoinColumns=@JoinColumn(name="produto_id"))
-	private List<Produto> produtos;
+	private Set<Produto> produtos;
 	
 	public Secao() {
 		super();
@@ -55,11 +57,11 @@ public class Secao {
 		this.nome = nome;
 	}
 
-	public List<Produto> getProdutos() {
+	public Set<Produto> getProdutos() {
 		return produtos;
 	}
 
-	public void setProdutos(List<Produto> produtos) {
+	public void setProdutos(Set<Produto> produtos) {
 		this.produtos = produtos;
 	}
 	

@@ -55,6 +55,10 @@ public class SecaoController {
 	
 	@RequestMapping(value = "/editar/{id}", method = RequestMethod.POST)
 	public String editar(@PathVariable("id") Long id, @Valid Secao secao, BindingResult bindingResult, Model model) {
+		Optional<Secao> secaoOptional = this.secaoService.recuperar(id);
+		if(secaoOptional.isPresent()) {
+			secao.setProdutos(secaoOptional.get().getProdutos());
+		}
 		secao.setId(id);
 		if(bindingResult.hasErrors()) {
 			return "/admin/secao/editar";
