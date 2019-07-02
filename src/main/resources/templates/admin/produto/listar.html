@@ -42,7 +42,7 @@
 								<tr>
 									<td th:text="${produto.nome}"></td>
 									<td th:text="${produto.fabricante.nome}"></td>
-									<td th:text="${produto.preco}"></td>
+									<td th:text="${#numbers.formatDecimal(produto.preco, 1,'POINT',2,'COMMA')}"></td>
 									<td>
 										<a role="button" th:href="@{/admin/produto/editar/{id}(id=${produto.id})}" 
 											class="btn btn-sm btn-warning">

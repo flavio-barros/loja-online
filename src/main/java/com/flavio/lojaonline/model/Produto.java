@@ -10,12 +10,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.validation.groups.ConvertGroup;
-
-import org.hibernate.validator.constraints.Range;
 
 import com.flavio.lojaonline.group.IProdutoFabricante;
 
@@ -39,7 +38,7 @@ public class Produto {
 	
 	private String descricao;
 	
-	@Range(min = 1, message = "O atributo preço deve ser maior ou igual a 1")
+	@Min(value = 1, message = "O atributo preço deve ser maior ou igual a 1")
 	private Double preco;
 	
 	@ManyToMany(mappedBy = "produtos")

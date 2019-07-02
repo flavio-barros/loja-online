@@ -27,7 +27,7 @@
 				Editar Produto
 			</div>
 			<div class="card-body">
-				<form id="formProduto" th:action="@{/admin/produto/cadastrar}" th:object="${produto}" method="post">
+				<form id="formProduto" th:action="@{/admin/produto/editar/{id}(id=${produto.id})}" th:object="${produto}" method="post">
 					<div class="form-row">
 						<div class="form-group col-md-12">
 							<label for="nomeProduto">Nome</label> 
@@ -53,7 +53,7 @@
 						</div>
 						<div class="form-group col-md-6">
 							<label for="precoProduto">Preço</label> 
-							<input id="precoProduto" class="form-control" th:field="*{preco}" 
+							<input id="precoProduto" class="form-control" th:value="${#numbers.formatDecimal(produto.preco, 1,'POINT',2,'COMMA')}" 
 								name="preco" placeholder="Preço">
 							<div class="invalid-feedback" id="fabricanteProdutoErro" th:if="${#fields.hasErrors('preco')}" 
 								th:errors="*{preco}">
