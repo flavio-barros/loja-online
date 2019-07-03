@@ -1,6 +1,5 @@
 package com.flavio.lojaonline.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,7 +57,6 @@ public class ProdutoService {
 	public void remover(Produto produto) {
 //		Removendo as seções do produto
 		Optional<Produto> produtoSalvoOpt = this.produtoRepository.findById(produto.getId());
-		
 		if(produtoSalvoOpt.isPresent()) {
 			Produto produtoSalvo = produtoSalvoOpt.get();
 			for(Secao secaoProduto: produtoSalvo.getSecoes()) {

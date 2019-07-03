@@ -33,6 +33,7 @@
 							<tr>
 								<th>Nome</th>
 								<th>Descrição</th>
+								<th>Detalhes</th>
 								<th>Ações</th>
 							</tr>
 						</thead>
@@ -41,6 +42,12 @@
 								<tr>
 									<td th:text="${fabricante.nome}"></td>
 									<td>Fabricantes</td>
+									<td>
+										<a role="button" th:href="@{/admin/fabricante/detalhes/{id}(id=${fabricante.id})}" 
+											class="btn btn-sm btn-success">
+											<i class="fas fa-info-circle"></i>
+										</a>
+									</td>
 									<td>
 										<a role="button" th:href="@{/admin/fabricante/editar/{id}(id=${fabricante.id})}" 
 											class="btn btn-sm btn-warning">

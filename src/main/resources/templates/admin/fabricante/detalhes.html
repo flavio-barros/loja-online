@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/layout-admin}">
+<head>
+	<title>Fabricantes</title>
+</head>
+
+<body>
+	
+	<div layout:fragment="content">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a th:href="@{/admin/home}">Painel de controle</a>
+			</li>
+			<li class="breadcrumb-item">
+				<a th:href="@{/admin/fabricante}">Fabricantes</a>
+			</li>
+			<li class="breadcrumb-item active">Detalhes</li>
+		</ol>
+		
+		<div class="card mb-3">
+			<div class="card-header">
+				<i class="fas fa-table"></i>
+				Detalhes do fabricante
+			</div>
+			<div class="card-body">
+				<form th:object="${fabricante}" method="post">
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="nomeFabricante">Nome</label> 
+							<input type="text" id="nomeFabricante" class="form-control" th:field="*{nome}" 
+								name="nome" placeholder="Nome" readonly="readonly">
+						</div>
+						<div class="form-group col-md-6">
+							<label for="qtdProdutosFabricante">Quantidade de produtos</label> 
+							<input type="text" id="qtdProdutosFabricante" class="form-control" th:value="${#lists.size(fabricante.produtos)}"
+								name="nome" placeholder="Nome" readonly="readonly">
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-12">
+							<label for="descricao-fabricante">Descrição</label> 
+							<textarea class="form-control" th:field="*{descricao}" id="descricao-fabricante" rows="5" readonly="readonly">
+							</textarea>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="card mb-3">
+			<div class="card-header">
+				<i class="fas fa-table"></i>
+				Produtos cadastrados
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<table class="table table-bordered table-striped tabela-produto" width="100%" cellspacing="0">
+						<thead>
+							<tr>
+								<th>Nome</th>
+								<th>Fabricante</th>
+								<th>Preço</th>
+								<th>Quantidade</th>
+								<th>Detalhes</th>
+							</tr>
+						</thead>
+						<tbody>
+							<th:block th:each="produto : ${fabricante.produtos}">
+								<tr>
+									<td th:text="${produto.nome}"></td>
+									<td th:text="${produto.fabricante.nome}"></td>
+									<td th:text="${produto.preco}"></td>
+									<td>0</td>
+									<td>Ver detalhes</td>
+								</tr>
+							</th:block>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<th:block layout:fragment="scripts">
+		<script th:src="@{/webjars/datatables/js/jquery.dataTables.min.js}"></script>
+        <script th:src="@{/webjars/datatables/js/dataTables.bootstrap4.min.js}"></script>
+        <script th:src="@{/js/produto.js}"></script>
+    </th:block>
+	
+</body>
+
+</html>

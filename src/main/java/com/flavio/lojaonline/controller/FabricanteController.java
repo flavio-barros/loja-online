@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.flavio.lojaonline.model.Fabricante;
+import com.flavio.lojaonline.model.Secao;
 import com.flavio.lojaonline.service.FabricanteService;
 
 @Controller
@@ -72,5 +73,15 @@ public class FabricanteController {
 		}else {
 			return "redirect:/admin/fabricante";
 		}
+	}
+	
+	@RequestMapping(value = "/detalhes/{id}", method = RequestMethod.GET)
+	public String detalhes(@PathVariable("id") Long id, Model model) {
+		Optional<Fabricante> secaoOpt = fabricanteService.recuperar(id);
+		if(secaoOpt.isPresent()) {
+			model.addAttribute("fabricante", secaoOpt.get());
+			return "admin/fabricante/detalhes";
+		}
+		return "redirect:/admin/fabricante";
 	}
 }
