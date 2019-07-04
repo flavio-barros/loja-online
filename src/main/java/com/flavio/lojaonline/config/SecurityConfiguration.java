@@ -28,7 +28,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.
         	authorizeRequests().
-        		antMatchers("/", "/home").permitAll().
+        		antMatchers("/", "/home", "/cadastrar/**").permitAll().
         		antMatchers("/css/**", "/js/**", "/webjars/**").permitAll().
         		antMatchers("/admin/**").hasRole(Constantes.PAPEL_ADMIN).
         		antMatchers("/cliente/**").hasRole(Constantes.PAPEL_USER).
@@ -54,6 +54,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         authProvider.setPasswordEncoder(passwordEncoder());
         return authProvider;
     }
+    
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();

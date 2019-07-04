@@ -2,6 +2,7 @@ package com.flavio.lojaonline.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
 
 @Entity
 @Table(name = "cliente")
@@ -18,7 +20,8 @@ public class Cliente {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	
-	@OneToOne
+	@Valid
+	@OneToOne(cascade = CascadeType.PERSIST)
 	private Endereco enderecoPrincipal;
 	
 	@OneToMany(mappedBy = "cliente")
@@ -30,6 +33,7 @@ public class Cliente {
 	@OneToOne
 	private Carrinho carrinho;
 	
+	@Valid
 	@OneToOne
 	private Usuario usuario;
 	
