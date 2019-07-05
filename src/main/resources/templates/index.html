@@ -10,9 +10,41 @@
 
 <body>
 	
-	<div layout:fragment="content">
-		
-	</div>
+	<div class="col-lg-9" layout:fragment="content">
+		<div class="row row-content">
+			<th:block th:each="produto : ${produtos}">
+				<div class="col-lg-4 col-md-6 mb-4">
+					<div class="card h-100">
+						<a href="#">
+							<img class="card-img-top" src="http://placehold.it/700x400" alt="">
+						</a>
+						<div class="card-body">
+							<h4 class="card-title">
+								<a th:href="@{/produto/detalhes/{id}(id=${produto.id})}" th:text="${produto.nome}">Item One</a>
+							</h4>
+							<h5 th:text="${'R$ ' + #numbers.formatDecimal(produto.preco, 1,'POINT',2,'COMMA')}"></h5>
+							<p class="card-text" th:text="${produto.descricao}"></p>
+							<div sec:authorize="hasRole('USER')">
+								<a class="btn btn-sm btn-secondary" th:href="@{/carrinho/adicionar/cliente}">
+									<i class="fas fa-shopping-cart"></i>
+									Adiconar ao carrinho
+								</a>
+							</div>
+							<div sec:authorize="!isAuthenticated()">
+								<a class="btn btn-sm btn-secondary" th:href="@{/carrinho/adicionar}">
+									<i class="fas fa-shopping-cart"></i>
+									Adiconar ao carrinho
+								</a>
+							</div>
+						</div>
+						<div class="card-footer">
+							<!--<small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>-->
+						</div>
+					</div>
+				</div>
+			</th:block>
+		</div><!-- row -->
+	</div><!-- col-lg-9 -->
 </body>
 
 </html>

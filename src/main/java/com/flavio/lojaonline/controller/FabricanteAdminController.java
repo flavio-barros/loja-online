@@ -18,7 +18,7 @@ import com.flavio.lojaonline.service.FabricanteService;
 
 @Controller
 @RequestMapping(value = "/admin/fabricante")
-public class FabricanteController {
+public class FabricanteAdminController {
 	
 	@Autowired
 	private FabricanteService fabricanteService;

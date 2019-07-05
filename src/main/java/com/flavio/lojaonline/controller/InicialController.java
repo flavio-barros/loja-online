@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.flavio.lojaonline.model.Cliente;
 import com.flavio.lojaonline.service.ClienteService;
+import com.flavio.lojaonline.service.ProdutoService;
 import com.flavio.lojaonline.service.SecaoService;
 
 @Controller
@@ -23,8 +24,12 @@ public class InicialController {
 	@Autowired
 	private ClienteService clienteService;
 	
+	@Autowired
+	private ProdutoService produtoService;
+	
 	@RequestMapping(value = {"home", ""}, method = RequestMethod.GET)
 	public String index(Model model) {
+		model.addAttribute("produtos", produtoService.listar());
 		model.addAttribute("secoes", secaoService.listar());
 		return "index";
 	}
