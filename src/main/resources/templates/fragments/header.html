@@ -29,7 +29,9 @@
 			 		<a class="nav-link" th:href="@{/admin/home}">Admin</a>
 			 	</li>
 				<li class="nav-item" sec:authorize="hasRole('USER')">
-					<a class="nav-link" th:href="@{/cliente/home}">Cliente</a>
+					<a class="nav-link" th:href="@{/cliente/home}" 
+						th:text="${'Olá, ' + #authentication.getPrincipal().usuario.primeiroNome}">
+					</a>
 				</li>
 			</ul>
 		</div>
