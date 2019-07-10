@@ -12,10 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.flavio.lojaonline.config.MyUser;
 import com.flavio.lojaonline.model.Cliente;
-import com.flavio.lojaonline.model.Produto;
 import com.flavio.lojaonline.service.CarrinhoService;
 import com.flavio.lojaonline.service.ClienteService;
-import com.flavio.lojaonline.service.ProdutoService;
 
 @Controller
 @RequestMapping(value = "carrinho/")

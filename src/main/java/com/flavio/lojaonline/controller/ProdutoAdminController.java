@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.flavio.lojaonline.model.Fabricante;
 import com.flavio.lojaonline.model.Produto;
 import com.flavio.lojaonline.service.FabricanteService;
 import com.flavio.lojaonline.service.ProdutoService;
