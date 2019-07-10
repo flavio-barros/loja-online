@@ -4,10 +4,10 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.flavio.lojaonline.model.Carrinho;
 import com.flavio.lojaonline.model.Cliente;
-import com.flavio.lojaonline.model.Usuario;
 
-public interface ClienteRepository extends JpaRepository<Cliente, Long>{
+public interface CarrinhoRepository extends JpaRepository<Carrinho, Long>{
 	
-	Optional<Cliente> findClienteByUsuario(Usuario usuario);
+	Optional<Carrinho> findByCliente(Cliente cliente);
 }

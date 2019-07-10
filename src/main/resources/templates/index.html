@@ -25,13 +25,14 @@
 							<h5 th:text="${'R$ ' + #numbers.formatDecimal(produto.preco, 1,'POINT',2,'COMMA')}"></h5>
 							<p class="card-text" th:text="${produto.descricao}"></p>
 							<div sec:authorize="hasRole('USER')">
-								<a class="btn btn-sm btn-secondary" th:href="@{/carrinho/adicionar/cliente}">
+								<a class="btn btn-sm btn-secondary"
+									th:href="@{/carrinho/adicionar/produto/{idProduto}(idProduto = ${produto.id})}">
 									<i class="fas fa-shopping-cart"></i>
 									Adiconar ao carrinho
 								</a>
 							</div>
 							<div sec:authorize="!isAuthenticated()">
-								<a class="btn btn-sm btn-secondary" th:href="@{/carrinho/adicionar}">
+								<a class="btn btn-sm btn-secondary" href="#">
 									<i class="fas fa-shopping-cart"></i>
 									Adiconar ao carrinho
 								</a>

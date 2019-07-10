@@ -23,7 +23,7 @@ import com.flavio.lojaonline.group.IProdutoFabricante;
 public class Produto {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
 	@NotBlank(message = "O atributo Nome é obrigatório")

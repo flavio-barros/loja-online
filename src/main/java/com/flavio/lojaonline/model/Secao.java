@@ -19,7 +19,7 @@ import javax.validation.constraints.Size;
 public class Secao {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	@Column(unique = true)

@@ -1,8 +1,10 @@
 package com.flavio.lojaonline.model;
 
-import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,11 +17,15 @@ import javax.persistence.Table;
 public class Carrinho {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@OneToMany(mappedBy = "carrinho")
-	private List<Item> itens;
+	@OneToMany(
+		cascade = CascadeType.ALL,
+        orphanRemoval = true,
+        fetch = FetchType.EAGER
+    )
+	private Set<Item> itens;
 	
 	@OneToOne(mappedBy = "carrinho")
 	private Cliente cliente;
@@ -28,7 +34,7 @@ public class Carrinho {
 		super();
 	}
 
-	public Carrinho(List<Item> itens, Cliente cliente) {
+	public Carrinho(Set<Item> itens, Cliente cliente) {
 		super();
 		this.itens = itens;
 		this.cliente = cliente;
@@ -42,11 +48,11 @@ public class Carrinho {
 		this.id = id;
 	}
 
-	public List<Item> getItens() {
+	public Set<Item> getItens() {
 		return itens;
 	}
 
-	public void setItens(List<Item> itens) {
+	public void setItens(Set<Item> itens) {
 		this.itens = itens;
 	}
 

@@ -18,7 +18,7 @@ import com.flavio.lojaonline.group.IProdutoFabricante;
 public class Fabricante {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Min(value = 0, groups = IProdutoFabricante.class, message = "Selecione um fabricante")
 	private Long id;
 	

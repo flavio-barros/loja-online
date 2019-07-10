@@ -16,7 +16,7 @@ import javax.persistence.Table;
 public class Pedido {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	@OneToMany(mappedBy = "pedido")

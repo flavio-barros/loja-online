@@ -1,6 +1,7 @@
 package com.flavio.lojaonline.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,7 +13,7 @@ import javax.persistence.Table;
 public class Item {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	@ManyToOne
@@ -20,10 +21,10 @@ public class Item {
 	
 	private int quantidade;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Pedido pedido;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Carrinho carrinho;
 	
 	public Item() {

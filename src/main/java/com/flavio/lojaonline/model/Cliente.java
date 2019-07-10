@@ -17,7 +17,7 @@ import javax.validation.Valid;
 public class Cliente {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	@Valid
@@ -30,7 +30,7 @@ public class Cliente {
 	@OneToMany(mappedBy = "cliente")
 	private List<Pedido> pedidos;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Carrinho carrinho;
 	
 	@Valid
