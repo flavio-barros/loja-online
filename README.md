@@ -1,6 +1,6 @@
 # Sistema de loja online
 
-##Descrição
+## Descrição
 
 Sistema de comércio eletrônico dividido em dois módulos: Administração e Loja. No módulo Administração, o usuário (administrador) é capaz de gerenciar os produtos, as seções (ou categorias) pelas quais os produtos são segmentados e os pedidos dos clientes. No módulo Loja, os clientes têm acesso aos produtos, visualizam os detalhes dos produtos e realizam pedidos (quando logados).
 
